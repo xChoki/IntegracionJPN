@@ -21,6 +21,11 @@ def ValuePredictor(to_predict_list):
     return result[0]
 
 @app.route('/result',methods = ['POST'])
+
+@app.route('/info')
+def info():
+    return flask.render_template('info.html')
+
 def result():
     if request.method == 'POST':
         to_predict_list = request.form.to_dict()
@@ -30,14 +35,42 @@ def result():
             result = ValuePredictor(to_predict_list)
             if int(result)==0:
                 prediction='Gana'
+                valorkills=to_predict_list[0]
+                valorasistencias=to_predict_list[1]
+                valorhs=to_predict_list[2]
+                if to_predict_list[3]==1:
+                    valorvive="Si"
+                else:
+                    valorvive="No"
             elif int(result)==1:
                 prediction='Pierde'
+                valorkills=to_predict_list[0]
+                valorasistencias=to_predict_list[1]
+                valorhs=to_predict_list[2]
+                if to_predict_list[3]==1:
+                    valorvive="Si"
+                else:
+                    valorvive="No"
             else:
                 prediction=f'{int(result)} No-definida'
+                valorkills=to_predict_list[0]
+                valorasistencias=to_predict_list[1]
+                valorhs=to_predict_list[2]
+                if to_predict_list[3]==1:
+                    valorvive="Si"
+                else:
+                    valorvive="No"
         except ValueError:
             prediction='Error en el formato de los datos'
+            valorkills=to_predict_list[0]
+            valorasistencias=to_predict_list[1]
+            valorhs=to_predict_list[2]
+            if to_predict_list[3]==1:
+                valorvive="Si"
+            else:
+                valorvive="No"
 
-        return render_template("result.html", prediction=prediction)
+        return render_template("result.html", prediction=prediction, valorkills=valorkills, valorasistencias=valorasistencias, valorhs=valorhs, valorvive=valorvive)
 
 
 if __name__=="__main__":

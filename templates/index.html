@@ -5,61 +5,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predicción - Fundamentos de Machine Learning</title>
+    <title>Inicio - Fundamentos de Machine Learning</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="dark-mode.css">
-    <link rel="stylesheet" href="style.css">
 
   </head>
 
-  <body class="bg-white text-center d-flex">
-    <div class="container d-flex p-3 mx-auto flex-column">
+  <body class="">
       <header class="mb-auto">
-        <h3 class="float-left">Predicción</h3>
-        <nav class="nav justify-content-center float-right">
-          <a class="nav-link active" href="./index.html">Principal</a>
-          <a class="nav-link" href="https://github.com/xChoki/IntegracionJPN" target="_blank">GitHub</a>
-          <div class="nav-link">
-  
-            <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" id="darkSwitch">
-              <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Modelo predictivo</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Principal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/xChoki/IntegracionJPN" target="_blank">GitHub</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/info">Dataset</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-  
-          </div>
-        </nav>
+          </nav>
+        </div>
       </header>
+
       <!--MatchKills','MatchAssists','MatchHeadshots','Survived-->    
       <main role="main">
         <div class="container">
-          
-          <div class="d-flex p-5 justify-content-center">
-            <h3>Modelo Predictivo basado en el Dataset CS:GO entregado por docente</h3>
+
+          <div class="container d-flex py-5 justify-content-center">
+            <div class="row">
+              <div class="col-12">
+                <h1>Modelo Predictivo</h1>
+              </div>
+              <div class="col-12">
+                <h3>Basado en el Dataset CS:GO entregado por docente</h3>
+              </div>
+              <div class="col-12 py-3">
+                <a href="/info" type="button" class="btn btn btn-outline-primary">Saber más...</a>
+              </div>
+            </div>
           </div>
           
           <!--Inicia adaboost-->
-          <div class="row my-5 rounded border">
+          <div class="row my-4 rounded border">
 
-            <div class="col-md-6 py-2">
+            <div class="justify-content-center col-md-6 py-2">
 
-              <div class="ribbon-wrapper">
-                  <div class="ribbon green">Mejor modelo</div>
-              </div>
-
-              <h5>AdaBoost</h5>
-              <p>Modelo realizado utilizando adaboost</p>
-              <!--Botón saber más-->
-              <div class="row justify-content-center">
-                <div class="col-12">
-                  <a href="#" type="button" class="btn btn btn-outline-primary">¿Que significa mejor modelo?</a>
+              <div class="container">
+                <div class="py-4">
+                  <h5>AdaBoost</h5>
                 </div>
               </div>
+
+              <div class="container">
+                <div class="py-2">
+                  <p>
+                    Modelo realizado utilizando el modelo de clasificación AdaBoost, el cual según nuestras pruebas mediante una 
+                    cantidad variada de modelos, este estos se encontraban RandomForest, Bagging, entre otros, dimos como resultado final que 
+                    AdaBoost resulta ser el mejor modelo para este caso.
+                  </p>
+                </div>
+              </div>
+
+              <!--Botón saber más-->
+              <div class="container">
+                <div class="py-2">
+                  <div class="col-12">
+                    <a href="#" type="button" class="btn btn btn-outline-primary">¿Que significa mejor modelo?</a>
+                  </div>
+                </div>
+              </div>
+              
             </div>
+
             <div class="col-md-6 py-2">
-              <form action="/result" method="POST" id="formulario" name="formulario">
+              <form action="/abresult" method="POST" id="formulario" name="formulario">
                 
                 <div class="form-group p-1 row">
                   <label for="MatchKills" class="col-sm-2 col-form-label">Asesinatos:</label>
@@ -93,7 +125,7 @@
                 </div>
                 
                 <div class="form-group row">
-                  <div class="col-sm-10 d-flex justify-content-center">
+                  <div class="col-sm-10 d-flex justify-content-center py-2">
                     <div class="px-1">
                       <button type="submit" class="btn btn-primary">Cargar datos</button>
                     </div>
@@ -107,84 +139,27 @@
             </div>
           </div>
           <!--Termina adaboost-->
-
-          <!--Inicia RandomForest-->
-          <div class="row my-5 rounded border">
-            <div class="col-md-6 py-2">
-              <h5>RandomForest</h5>
-              <p>Modelo realizado utilizando RandomForest</p>
-              
-            </div>
-
-            <div class="col-md-6 py-2">
-              <form action="/result" method="POST" id="formulario" name="formulario">
-                
-                <div class="form-group p-1 row">
-                  <label for="MatchKills" class="col-sm-2 col-form-label">Asesinatos:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="MatchKills" name="MatchKills" placeholder="123">
-                  </div>
-                </div>
-      
-                <div class="form-group p-1 row">
-                  <label for="MatchAssists" class="col-sm-2 col-form-label">Asistencias:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="MatchAssists" name="MatchAssists" placeholder="123">
-                  </div>
-                </div>
-      
-                <div class="form-group p-1 row">
-                  <label for="MatchHeadshots" class="col-sm-2 col-form-label">Tiros a la cabeza:</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="MatchHeadshots" name="MatchHeadshots" placeholder="123">
-                  </div>
-                </div>
-                
-                <div class="form-group p-1 row">
-                  <label for="Survived" class="col-sm-2 col-form-label">¿Jugador sobrevive?:</label>
-                  <div class="col-sm-10">
-                    <select id="Survived" name="Survived" class="form-control">
-                      <option value="0">No</option>
-                      <option value="1">Si</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div class="form-group row">
-                  <div class="col-sm-10 d-flex justify-content-center">
-                    <div class="px-1">
-                      <button type="submit" class="btn btn-primary">Cargar datos</button>
-                    </div>
-                    <div class="px-1">
-                      <button type="reset" class="btn btn-secondary" value="Limpiar">Limpiar</button>
-                    </div>
-                  </div>
-                </div>
-      
-              </form>
-            </div>
-          </div>
-          <!--Termina RandomForest-->
-  
         </div>
       </main>
   
       <!--Inicia FOOTER-->
-      <footer class="page-footer font-small cyan darken-3">
+      <footer class="page-footer">
         <div class="container">
           <div class="row">
       
             <!-- Grid column -->
             <div class="col-md-12 py-5">
-              <div class="mb-5 flex-center">
+              <div class="d-flex justify-content-center mb-5">
       
                 <!-- GitHub -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
+                <a href="https://github.com/xChoki/IntegracionJPN" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </a>
 
               </div>
-              <div class="footer-copyright text-center py-3">© 2020 Copyright:
+              <div class="footer-copyright text-center py-2">© 2022 Copyright:
                 <div class="row">
                   <a class="col-md-4 col-sm-12" href="">Carlos Muñoz</a>
                   <a class="col-md-4 col-sm-12" href="">Javier Quinteros</a>
@@ -196,17 +171,8 @@
           </div>
         </div>
         <!-- Footer Elements -->
-      
-        <!-- Copyright -->
-        
-        <!-- Copyright -->
-      
       </footer>
       <!-- Footer -->
-
-      <!-- You must load 'dark-mode-switch.js' at the foot of the page -->
-      <script src="dark-mode-switch.min.js"></script>
-    </div>
 
   </body>
   
