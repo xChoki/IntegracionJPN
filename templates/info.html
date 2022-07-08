@@ -16,13 +16,49 @@
         <script>
 
             $(document).ready(function () {
-
-                $.get("./templates/json/datos.json", function (data) {
+                var terminado = false;
+                $("#mensaje").show();
+                $.getJSON("https://raw.githubusercontent.com/xChoki/IntegracionJPN/desarrollo/templates/json/datos.json", function (data) {
                     console.log("cargados datos");
-                    $.each(data.results, function (i, item) {
+                    $.each(data, function (i, item) {
                         console.log("mostrando datos");
                         $("#resultado").append("<tr><td>" + item.FIELD1 + "</td>" +
-                            "<td>" + item.SteamId + "</td></tr>")
+                            "<td>" + item.FIELD1 + "</td>" + 
+                            "<td>" + item.Map + "</td>" + 
+                            "<td>" + item.Team + "</td>" + 
+                            "<td>" + item.InternalTeamId + "</td>" + 
+                            "<td>" + item.MatchId + "</td>" + 
+                            "<td>" + item.RoundId + "</td>" + 
+                            "<td>" + item.SteamId + "</td>" + 
+                            "<td>" + item.RoundWinner + "</td>" + 
+                            "<td>" + item.MatchWinner + "</td>" + 
+                            "<td>" + item.Survived + "</td>" + 
+                            "<td>" + item.AbnormalMatch + "</td>" + 
+                            "<td>" + item.TimeAlive + "</td>" + 
+                            "<td>" + item.ScaledTimeAlive + "</td>" + 
+                            "<td>" + item.AvgCentroidDistance + "</td>" + 
+                            "<td>" + item.TravelledDistance + "</td>" + 
+                            "<td>" + item.AvgRoundVelocity + "</td>" + 
+                            "<td>" + item.AvgKillDistance + "</td>" + 
+                            "<td>" + item.AvgSiteDistance + "</td>" + 
+                            "<td>" + item.RNonLethalGrenadesThrown + "</td>" + 
+                            "<td>" + item.PrimaryAssaultRifle + "</td>" + 
+                            "<td>" + item.PrimarySniperRifle + "</td>" + 
+                            "<td>" + item.PrimaryHeavy + "</td>" + 
+                            "<td>" + item.PrimarySMG + "</td>" + 
+                            "<td>" + item.PrimaryPistol + "</td>" + 
+                            "<td>" + item.FirstKillTime + "</td>" + 
+                            "<td>" + item.RoundKills + "</td>" + 
+                            "<td>" + item.RoundAssists + "</td>" + 
+                            "<td>" + item.RoundHeadshots + "</td>" + 
+                            "<td>" + item.RoundFlankKills + "</td>" + 
+                            "<td>" + item.RoundStartingEquipmentValue + "</td>" + 
+                            "<td>" + item.TeamStartingEquipmentValue + "</td>" + 
+                            "<td>" + item.MatchKills + "</td>" + 
+                            "<td>" + item.MatchFlankKills + "</td>" + 
+                            "<td>" + item.MatchAssists + "</td>" + 
+                            "<td>" + item.MatchHeadshots + "</td>" + 
+                            "<td>" + item.AvgMatchKillDist + "</td></tr>");
                     });
                 });
             });
@@ -58,12 +94,49 @@
         </header>
 
         <div class="container">
+            <div class="d-flex justify-content-center" id="mensaje">
+                Esto puede tardar un tiempo en cargar los datos.
+            </div>
             <table id="resultado" class="table">
     
                 <thead>
                     <tr>
-                        <th>Id Campo</th>
+                        <th>ID</th>
+                        <th>Map</th>
+                        <th>Team</th>
+                        <th>InternalTeamId</th>
+                        <th>MatchID</th>
+                        <th>RoundID</th>
                         <th>SteamID</th>
+                        <th>RoundWinner</th>
+                        <th>MatchWinner</th>
+                        <th>Survived</th>
+                        <th>AbnormalMatch</th>
+                        <th>TimeAlive</th>
+                        <th>ScaledTimeAlive</th>
+                        <th>AvgCentroidDistance</th>
+                        <th>TravelledDistance</th>
+                        <th>AvgRoundVelocity</th>
+                        <th>AvgKillDistance</th>
+                        <th>AvgSiteDistance</th>
+                        <th>RLethalGrenadesThrown</th>
+                        <th>RNonLethalGrenadesThrown</th>
+                        <th>PrimaryAssaultRifle</th>
+                        <th>PrimarySniperRifle</th>
+                        <th>PrimaryHeavy</th>
+                        <th>PrimarySMG</th>
+                        <th>PrimaryPistol</th>
+                        <th>FirstKillTime</th>
+                        <th>RoundKills</th>
+                        <th>RoundAssists</th>
+                        <th>RoundHeadshots</th>
+                        <th>RoundFlankKills</th>
+                        <th>RoundStartingEquipmentValue</th>
+                        <th>TeamStartingEquipmentValue</th>
+                        <th>MatchKills</th>
+                        <th>MatchAssists</th>
+                        <th>MatchHeadshots</th>
+                        <th>AvgMatchKillDist</th>
                     </tr>
                 </thead>
     
