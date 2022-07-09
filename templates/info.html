@@ -12,18 +12,20 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+        
         <script>
-
+            
             $(document).ready(function () {
                 var terminado = false;
+                var cant_datos = 5;
+                
                 $("#mensaje").show();
-                $.getJSON("https://raw.githubusercontent.com/xChoki/IntegracionJPN/desarrollo/templates/json/datos.json", function (data) {
+                
+                $.getJSON("", function (data) {
                     console.log("cargados datos");
                     $.each(data, function (i, item) {
                         console.log("mostrando datos");
                         $("#resultado").append("<tr><td>" + item.FIELD1 + "</td>" +
-                            "<td>" + item.FIELD1 + "</td>" + 
                             "<td>" + item.Map + "</td>" + 
                             "<td>" + item.Team + "</td>" + 
                             "<td>" + item.InternalTeamId + "</td>" + 
@@ -41,6 +43,7 @@
                             "<td>" + item.AvgRoundVelocity + "</td>" + 
                             "<td>" + item.AvgKillDistance + "</td>" + 
                             "<td>" + item.AvgSiteDistance + "</td>" + 
+                            "<td>" + item.RLethalGrenadesThrown + "</td>" + 
                             "<td>" + item.RNonLethalGrenadesThrown + "</td>" + 
                             "<td>" + item.PrimaryAssaultRifle + "</td>" + 
                             "<td>" + item.PrimarySniperRifle + "</td>" + 
@@ -62,7 +65,10 @@
                     });
                 });
             });
+            
         </script>
+
+        
 
     </head>
 
@@ -134,6 +140,7 @@
                         <th>RoundStartingEquipmentValue</th>
                         <th>TeamStartingEquipmentValue</th>
                         <th>MatchKills</th>
+                        <th>MatchFlankKills</th>
                         <th>MatchAssists</th>
                         <th>MatchHeadshots</th>
                         <th>AvgMatchKillDist</th>
@@ -145,7 +152,6 @@
                 </tbody>
             </table>
         </div>
-
 
         <!--Inicia FOOTER-->
         <footer class="page-footer">

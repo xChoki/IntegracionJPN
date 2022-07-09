@@ -26,6 +26,11 @@ def ValuePredictor(to_predict_list):
 def info():
     return flask.render_template('info.html')
 
+@app.route('/mejor')
+def info():
+    return flask.render_template('mejor.html')
+
+
 def result():
     if request.method == 'POST':
         to_predict_list = request.form.to_dict()
