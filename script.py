@@ -27,7 +27,7 @@ def info():
     return flask.render_template('info.html')
 
 @app.route('/mejor')
-def info():
+def mejor():
     return flask.render_template('mejor.html')
 
 
