@@ -20,8 +20,6 @@ def ValuePredictor(to_predict_list):
     result = loaded_model.predict(to_predict)
     return result[0]
 
-@app.route('/result',methods = ['POST'])
-
 @app.route('/info')
 def info():
     return flask.render_template('info.html')
@@ -30,6 +28,7 @@ def info():
 def mejor():
     return flask.render_template('mejor.html')
 
+@app.route('/result',methods = ['POST'])
 
 def result():
     if request.method == 'POST':
