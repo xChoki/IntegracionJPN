@@ -122,12 +122,173 @@
             <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  ¿Que significa este resultado?
+                  ¿Que significa este resultado y cómo se obtuvo?
                </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                <div class="accordion-body">
-                  Explicación que hay que poner.
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-12 py-2">
+                           <p>
+                              Este resultado significa que, utilizando la información entregada por teclado del usuario en el formulario anterior, con los datos correspondientes a {{valorkills}} asesinatos, {{valorasistencias}} asistencias, {{valorhs}} tiros a la cabeza y finalmente que el jugador {{valorvive}} sobrevive
+                              da como resultado final que el jugador {{prediction}} la partida.
+                           </p>
+                        </div>
+                        <div class="col-12 py-2">
+                           <p>
+                              AdaBoost, corto de Adaptive Boosting, es un algoritmo de clasificación estadística formulado por Yoav Freund y Robert Scapire en 1995, este modelo tiene la caracteristica de ser adaptativo, es decir, en el sentido que los resultados que resultan fallar son reingresados y modificados
+                              a favor de la instancia erróneamente clasificado por el clasificador anterior, el cual se adapta en su mayoría a nuestro caso, debido a la poca capacidad de predicción que poseemos en un juego como CSGO y que estará mejorando los errores que se obtienen como resultado.
+                           </p>
+                        </div>
+                        <div class="col-12 py-2">
+
+                           <div class="container">
+                              <div class="row pt-3">
+                                 <h5>Primer paso es importar librerías de Python:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    from sklearn.model_selection import train_test_split <br>
+                                    from sklearn.ensemble import AdaBoostClassifier <br>
+                                    <br>
+                                    import pickle <br>
+                                    <br>
+                                    import numpy as np # for data manipulation <br>
+                                    import pandas as pd # for data manipulation <br>
+                                    from sklearn.model_selection import train_test_split # will be used for data split <br>
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Segundo paso es leer el archivo CSV:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    #Leyendo archivo CSV mediante github raw <br>
+                                    df = pd.read_csv('https://raw.githubusercontent.com/xChoki/FML-Datos-CSGO/main/datos.csv', sep=";")
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Tercer paso es transformar variables True y False a valor numérido 0 y 1:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    # Transformando variable MatchWinner a valor numérico <br>
+                                    df["MatchWinner"] = df["MatchWinner"].astype(int) <br>
+                                    <br>
+                                    # Transformando variable Survived a valor numérico <br>
+                                    df["Survived"] = df["Survived"].astype(int) <br>
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Cuarto paso es eliminar del DataFrame información innecesaria que no utilizaremos en este modelo:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    df = df.drop(['Unnamed: 0', 'RoundWinner', 'RoundKills','RoundAssists','RoundHeadshots','Map','Team','InternalTeamId','MatchId','RoundId', 'SteamId', 'AbnormalMatch', 'TimeAlive', 'ScaledTimeAlive', 'AvgCentroidDistance', 'TravelledDistance', 'AvgRoundVelocity', 'AvgKillDistance', 'AvgSiteDistance', 'RLethalGrenadesThrown', 'RNonLethalGrenadesThrown', 'PrimaryAssaultRifle', 'PrimarySniperRifle', 'PrimaryHeavy', 'PrimarySMG', 'PrimaryPistol', 'FirstKillTime', 'FirstKillTime', 'RoundFlankKills', 'RoundStartingEquipmentValue', 'TeamStartingEquipmentValue', 'MatchFlankKills', 'AvgMatchKillDist'], axis = 1) <br>
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Quinto paso es preparar valores de prueba y entrenamiento:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    y = df['MatchWinner'] <br>
+                                    X = df.drop('MatchWinner', axis = 1) <br>
+                                    <br>
+                                    Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.2, stratify=y)
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Sexto paso es generar el clasificador AdaBoost con los parámetros:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    clf = AdaBoostClassifier(n_estimators=5000) <br>
+                                    #Este es la prueba para obtener el score de nuestro modelo <br>
+                                    print(clf.fit(Xtrain.values, Ytrain.values).score(Xtest.values, Ytest.values))
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Séptimo paso es generar el archivo del modelo para realizar la integración:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    filename = 'checkpoints/model.pkl' <br>
+                                    pickle.dump(clf, open(filename, 'wb'))
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Octavo paso es cargar el modelo abriendo el archivo generado por Pickle:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    loaded_model = pickle.load(open(filename, 'rb')) <br>
+                                    result = loaded_model.score(Xtest.values, Ytest.values)
+                                 </code>
+                              </p>
+                           </div>
+
+                           <div class="container pt-3">
+                              <div class="row pt-3">
+                                 <h5>Noveno paso es imprimir por pantalla el resultado:</h5>
+                              </div>
+                           </div>
+                           <div class="container border rounded bg-dark text-white">
+                              <p class="p-3 mb-2">
+                                 <code>
+                                    print(result) <br>
+                                    #Como paso extra podemos hacer una predicción de prueba para corroborar que todo funciona <br>
+                                    print(loaded_model.predict([[2, 2, 2, 1]]))
+                                 </code>
+                              </p>
+                           </div>
+
+                        </div>
+                        <div class="col-12 pt-3">
+                           <p>
+                              Para más infomación de cómo funciona detrás el algoritmo a nivel matemático ver: <a href="https://en.wikipedia.org/wiki/AdaBoost" class="text-decoration-none">AdaBoost (Wikipedia, Inglés)</a>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
             </div>
