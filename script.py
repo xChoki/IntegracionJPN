@@ -82,6 +82,3 @@ def result():
 if __name__=="__main__":
 
     app.run(port=5001)
-
-url_for('static', filename='graf1.png')
-url_for('static', filename='heatmap.png')
