@@ -43,21 +43,109 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="py-5 col-12 d-flex justify-content-center">
-                    <h2>¿Que significa que sea el mejor modelo?</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 py-4">
+                            <h4>Índice</h4>
+                        </div>
+                        <div class="col-12 pb-5">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="#Que_significa_mejor_modelo" class="text-decoration-none" style="color: black;">
+                                        ¿Que significa que sea el mejor modelo?
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#Histograma_todas_variables" class="text-decoration-none" style="color: black;">
+                                        Histogramas de todas las variables
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#Mapa_de_calor_de_las_variables" class="text-decoration-none" style="color: black;">
+                                        Mapa de calor de todas las variables
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#Por_que_ab" class="text-decoration-none" style="color: black;">
+                                        ¿Por qué AdaBoost?
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-justify">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quisquam officia dolorum, exercitationem porro, est atque temporibus adipisci, perferendis alias voluptatem! Qui, sapiente cupiditate! Nemo minima voluptatum eos accusantium id. Explicabo cupiditate doloremque beatae quis rem natus numquam recusandae deleniti officia, ut quae, odio, quam earum deserunt nihil totam fugiat.
-                    </p>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="py-5 col-12 d-flex justify-content-center">
+                            <h2 id="Que_significa_mejor_modelo">¿Que significa que sea el mejor modelo?</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                                La definición de un mejor modelo se divide en varios aspectos, el primero corresponde al contexto del problema o situación a resolver,
+                                se debe tener en consideración los 2 tipos de modelos que hemos trabajado, entre estos se encuentan Lineales o de Clasificación, durante el
+                                desarrollo de la solución dimos con el resultado que en nuestro caso se ajusta más los modelos de clasificación ya que deseeamos, principalmente,
+                                definir si el jugador resulta ser el ganador o no, acotando las posibles soluciones a básicamente un Si y No.
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                                Además, debemos tener en cuenta la distribución de los datos, que en nuestro caso no son favorables, debido a que en este caso CS:GO es un juego no
+                                muy fácil de predecir ya que contiene muchos elementos externos que hacen cualquier tipo de estudio a las partidas un mayor problema de lo que son.
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="container">
-                    <div class="py-1 col-12 d-flex justify-content-center">
-                        <h3>Histogramas de todas las variables</h3>
+                    <div class="row">
+                        <div class="py-1 col-12 d-flex justify-content-center">
+                            <h3 id="Histograma_todas_variables">Histogramas de todas las variables</h3>
+                        </div>
+                        <div class="py-5 col-12">
+                            <img src="/static/graf1.png" alt="fotograficos1" width="100%" height="100%">
+                        </div>
+                        <div class="py-1 col-12">
+                            <p>
+                                Como podemos ver en los histogramas mostrados previamente no se encuenta en ningún caso una variable con una distribución normal <a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_gaussiana" class="text-decoration-none">(Campana de Gauss)</a>,
+                                esto como consecuencia nos da mayores problemas con respecto a realizar una predicción, las posibles causas de que esto ocurra están
+                                ligadas completamente a la poca capacidad que se posee en el juego de predecir que puede resultar como no, por ejemplo, un jugador perfectamente
+                                puede ganar la partida si este no tiene ningún asesinato, asistencia, pero que se movió en la partida como no, los conocidos AFK <a href="https://en.wikipedia.org/wiki/Glossary_of_video_game_terms#AFK" class="text-decoration-none">(Away From Keyboard)</a>.
+                            </p>
+                            <p>
+                                Durante el desarrollo de este problema nos encontramos con varias consecuencias referentes a este caso, como por ejemplo la poca correlación que estas variables tienen entre sí. 
+                            </p>
+                        </div>
                     </div>
-                    <div class="py-5 col-12 d-flex justify-content-center">
-                        <img src="../images/gráficos1.png" alt="fotograficos1">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="py-1 col-12 d-flex justify-content-center">
+                            <h3 id="Mapa_de_calor_de_las_variables">Mapa de calor de todas las variables</h3>
+                        </div>
+                        <div class="py-5 col-12">
+                            <img src="/static/heatmap.png" alt="fotograficos1" width="100%" height="100%">
+                        </div>
+                        <div class="py-1 col-12">
+                            <p>
+                                Como se puede ver, las variables que tienen relación entre si son demasiado pocas, y la gran mayoria no tiene relaciones entre si, por lo tanto decidimos ir con las variables más comunes,
+                                estas son Asesinatos, Asistencias y Tiros a la cabeza, que como se pueden ver son las que más relación entre si tienen, esto con la finalidad de dar con el resultado final de si el jugador
+                                resulta ser el ganador o no de la partida. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="py-1 col-12 d-flex justify-content-center">
+                            <h3 id="Por_que_ab">¿Por qué AdaBoost?</h3>
+                        </div>
+                        <div class="py-1 col-12">
+                            <p>
+                                La razón por la cual elegimos AdaBoost como nuestro modelo es bastante simple, debido a la baja relacion entre variables y la poca moldeabilidad que el dataset posee
+                                AdaBoost nos entrega una mejora mayor a las anteriores debido a que este utiliza los resultados erroneos para mejorarse a sí mismo y dar con un modelo más elaborado.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
@@ -66,6 +154,14 @@
             </div>
         </div>
     </main>
+
+    <div class="container d-flex justify-content-center">
+        <a href="#top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </a>
+    </div>
 
     <!--Inicia FOOTER-->
     <footer class="page-footer">

@@ -3,7 +3,7 @@ import os
 import numpy as np
 import flask
 import pickle
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 
 #creating instance of the class
 app=Flask(__name__)
@@ -13,6 +13,8 @@ app=Flask(__name__)
 @app.route('/index')
 def index():
     return flask.render_template('index.html')
+
+
 
 def ValuePredictor(to_predict_list):
     to_predict = np.array(to_predict_list).reshape(1, 4)
@@ -80,3 +82,6 @@ def result():
 if __name__=="__main__":
 
     app.run(port=5001)
+
+url_for('static', filename='graf1.png')
+url_for('static', filename='heatmap.png')
