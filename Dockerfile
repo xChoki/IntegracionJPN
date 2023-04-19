@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 8080
 
 # Command to start the server
-CMD ["python", "script.py"]
+CMD ["flask", "run", "--host=0.0.0.0"]
