@@ -1,5 +1,4 @@
 flask
-waitress 
 numpy
 sklearn
 gunicorn
