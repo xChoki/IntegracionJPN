@@ -1,5 +1,5 @@
-
-FROM python:3.8
+DockerfileCopy code# Base image
+FROM python:3.9-slim
 
 # Working directory
 WORKDIR /app
@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 8080
 
 # Command to start the server
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
